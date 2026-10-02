@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Kowalski — UI/UX Designer & Product Visionary</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome dla ikonek -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131c2e;
+            --accent: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nagłówek i nawigacja */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .cta-btn {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Sekcja Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #818cf8;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Sekcja Statystyk */
+        .stats {
+            max-width: 1000px;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Sekcja Portfolio / Projekty */
+        .projects {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #1e293b;
+            position: relative;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-info h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: #818cf8;
+        }
+
+        /* Sekcja Umiejętności i Narzędzia */
+        .skills {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .skill-box:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .skill-box i {
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .skill-box h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Sekcja Kontaktu / Footer */
+        footer {
+            background: #070a12;
+            border-top: 1px solid var(--border);
+            padding: 5rem 2rem 3rem;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nawigacja -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">JK.</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projekty</a></li>
+                <li><a href="#skills">Kompetencje</a></li>
+                <li><a href="#about">O mnie</a></li>
+            </ul>
+            <a href="#contact" class="cta-btn">Współpracujmy</a>
+        </div>
+    </header>
+
+    <!-- Sekcja Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-sparkles"></i> Senior UI/UX & Product Designer
+            </div>
+            <h1>Projektuję cyfrowe doświadczenia, które <span>napędzają biznes</span></h1>
+            <p>Zamawiasz nie tylko estetyczne interfejsy, ale przede wszystkim intuicyjne ścieżki użytkownika, oparte na danych, badaniach i nowoczesnej psychologii designu.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-btn">Zobacz moje prace</a>
+                <a href="#contact" class="btn-secondary">Napisz do mnie</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statystyki -->
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-number">7+</div>
+            <div class="stat-label">Lat doświadczenia</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Ukończonych projektów</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Zadowolenia klientów</div>
+        </div>
+    </section>
+
+    <!-- Sekcja Projektów -->
+    <section class="projects" id="projects">
+        <div class="section-title">
+            <h2>Wybrane Projekty</h2>
+            <p>Zobacz, jak przekładam skomplikowane problemy w proste, eleganckie rozwiązania.</p>
+        </div>
+        <div class="project-grid">
+            <!-- Projekt 1 -->
+            <div class="project-card">
+                <div class="project-img" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">Fintech</span>
+                        <span class="tag">Web App</span>
+                        <span class="tag">Design System</span>
+                    </div>
+                    <h3>FinPulse Dashboard</h3>
+                    <p>Kompleksowy redesign panelu analitycznego dla platformy inwestycyjnej, zwiększający retencję użytkowników o 34%.</p>
+                    <a href="#contact" class="project-link">Analiza case study <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Projekt 2 -->
+            <div class="project-card">
+                <div class="project-img" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Mobile App</span>
+                        <span class="tag">UX Research</span>
+                    </div>
+                    <h3>Aura Eco Marketplace</h3>
+                    <p>Aplikacja mobilna e-commerce dla marek zrównoważonego rozwoju. Od szkiców (wireframes) do pełnego wdrożenia.</p>
+                    <a href="#contact" class="project-link">Analiza case study <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Projekt 3 -->
+            <div class="project-card">
+                <div class="project-img" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">AI Tool</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                    <h3>Synthetix AI Copilot</h3>
+                    <p>Projekt interfejsu konwersacyjnego dla narzędzia AI wspierającego twórców treści i marketingowców.</p>
+                    <a href="#contact" class="project-link">Analiza case study <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kompetencje -->
+    <section class="skills" id="skills">
+        <div class="section-title">
+            <h2>Czym się zajmuję?</h2>
+            <p>Moje główne obszary specjalizacji w procesie produktowym.</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <h3>UX Research</h3>
+                <p>Wywiady z użytkownikami, persony, mapy podróży klienta (CJM) oraz testy użyteczności.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fa-solid fa-pen-nib"></i>
+                <h3>UI & Visual Design</h3>
+                <p>Nowoczesne, pixel-perfect interfejsy dopasowane do identyfikacji wizualnej marki.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>Design Systems</h3>
+                <p>Tworzenie skalowalnych bibliotek komponentów w Figmie, zapewniających spójność produktu.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fa-solid fa-code"></i>
+                <h3>Design to Code</h3>
+                <p>Doskonałe zrozumienie HTML/CSS/JS, dzięki czemu moje projekty są realne i łatwe we wdrożeniu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Kontakt -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>Porozmawiajmy o Twoim projekcie</h2>
+            <p>Masz ciekawy pomysł lub potrzebujesz eksperta UI/UX do swojego zespołu? Skontaktuj się ze mną.</p>
+            <a href="mailto:kontakt@twojadomena.pl" class="cta-btn">kontakt@twojadomena.pl</a>
+            
+            <div class="social-icons" style="margin-top: 2.5rem;">
+                <a href="#" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" title="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+                <a href="#" target="_blank" title="Behance"><i class="fa-brands fa-behance"></i></a>
+                <a href="#" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2026 Jan Kowalski. Wszelkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prosty JavaScript na interakcje -->
+    <script>
+        // Płynne logowanie kliknięcia w linki nawigacyjne (opcjonalne, nowoczesne przeglądarki robią to przez CSS scroll-behavior)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
